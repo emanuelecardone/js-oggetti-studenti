@@ -23,8 +23,8 @@ listWrapper.append(listHead, listBody);
 // Buttons lista superiore
 const gamesButton = document.createElement('button');
 const moviesButton = document.createElement('button');
-gamesButton.classList.add('btn', 'text-white', 'me-1', 'border', 'border-2', 'border-white', 'fs-4', 'fw-bold', 'text-uppercase');
-moviesButton.classList.add('btn', 'text-white', 'ms-1', 'border', 'border-2', 'border-white', 'fs-4', 'fw-bold', 'text-uppercase');
+gamesButton.classList.add('games_button', 'picked', 'btn', 'text-white', 'position-fixed', 'fs-4', 'fw-bold', 'text-uppercase');
+moviesButton.classList.add('movies_button', 'btn', 'text-white', 'position-fixed', 'fs-4', 'fw-bold', 'text-uppercase');
 gamesButton.innerHTML = 'games';
 moviesButton.innerHTML = 'movies';
 listHead.append(gamesButton, moviesButton);
@@ -137,6 +137,8 @@ fillingBoxesUp(activeArray, activeObject);
 
 gamesButton.addEventListener('click', function(){
     
+    moviesButton.classList.remove('picked');
+    gamesButton.classList.add('picked');
     activeArray = videoGames;
     activeObject = 0;   
     numberOfKeys = decidingHowManyKeys(activeArray);
@@ -145,6 +147,9 @@ gamesButton.addEventListener('click', function(){
 });
 
 moviesButton.addEventListener('click', function(){
+
+    gamesButton.classList.remove('picked');
+    moviesButton.classList.add('picked');
     activeArray = movies;
     activeObject = 0;
     numberOfKeys = decidingHowManyKeys(activeArray);
