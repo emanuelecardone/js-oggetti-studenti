@@ -144,82 +144,90 @@ listBody.append(pageListNameBox, pageListTypeBox, pageListPriceBox, pageListSaga
 
 
 let activeArray = videoGames;
+let arrayWidth = decidingArrayLength(activeArray);
 let activeObject = 0;
-let numberOfKeys = 0;
-
-// switch(activeArrayIndex){
-//     case 0:
-//         activeArray = videoGames;
-//         break;
-//     case 1:
-//         activeArray = movies;
-//         break;        
-// }   
+let numberOfKeys = decidingHowManyKeys(activeArray);
 
 // Tutti gli oggetti hanno lo stesso numero di keys quindi un controllo su uno è sufficiente
-for(let key in activeArray[0]){
-    numberOfKeys++;
-}
 
 fillingBoxesUp(activeArray, activeObject);
 
 gamesButton.addEventListener('click', function(){
     
     activeArray = videoGames;
-    for(let key in activeArray[0]){
-        numberOfKeys++;
-    }    
+    activeObject = 0;   
+    numberOfKeys = decidingHowManyKeys(activeArray);
     fillingBoxesUp(activeArray, activeObject);
-    console.log(activeArray);
+    console.log(activeArray + numberOfKeys);
 });
 
 moviesButton.addEventListener('click', function(){
     activeArray = movies;
-    for(let key in activeArray[0]){
-        numberOfKeys++;
-    }    
+    activeObject = 0;
+    numberOfKeys = decidingHowManyKeys(activeArray);
     fillingBoxesUp(activeArray, activeObject);
-    console.log(activeArray);
+    console.log(activeArray + numberOfKeys);
 });
 
 
 
 sliderLeftArrow.addEventListener('click', function(){
 
+    arrayWidth = decidingArrayLength(activeArray);
+
+    numberOfKeys = decidingHowManyKeys(activeArray);
+
     if(activeObject === 0){
-        activeObject = numberOfKeys;
+        activeObject = arrayWidth - 1;
     } else{
         activeObject--;
     }
-
-    pageListNameBox.innerHTML = activeArray[activeObject]['name'];
-    pageListTypeBox.innerHTML = activeArray[activeObject]['type'];
-    pageListPriceBox.innerHTML = activeArray[activeObject]['price'];
-    pageListSagaBox.innerHTML = activeArray[activeObject]['saga'];
+    
+    fillingBoxesUp(activeArray, activeObject);
 
 });
 
 sliderRightArrow.addEventListener('click', function(){
 
-    if(activeObject === numberOfKeys){
+    arrayWidth = decidingArrayLength(activeArray);
+
+    if(activeObject === arrayWidth - 1){
         activeObject = 0;
     } else{
         activeObject++;
     }
     
-    pageListNameBox.innerHTML = activeArray[activeObject]['name'];
-    pageListTypeBox.innerHTML = activeArray[activeObject]['type'];
-    pageListPriceBox.innerHTML = activeArray[activeObject]['price'];
-    pageListSagaBox.innerHTML = activeArray[activeObject]['saga'];
+    fillingBoxesUp(activeArray, activeObject);
 
 });
 
 
 
 function fillingBoxesUp(pickedArray, pickedObject){
+    
     pageListNameBox.innerHTML = pickedArray[pickedObject]['name'];
     pageListTypeBox.innerHTML = pickedArray[pickedObject]['type'];
     pageListPriceBox.innerHTML = pickedArray[pickedObject]['price'];
     pageListSagaBox.innerHTML = pickedArray[pickedObject]['saga'];
 };
+
+function decidingHowManyKeys(pickedArray){
+    
+    console.log(pickedArray);
+
+    let keysAmount = 0;
+    for(let key in pickedArray[0]){
+        keysAmount++;
+    } 
+    console.log(keysAmount);
+    return keysAmount;
+};
+
+function decidingArrayLength(pickedArray){
+
+    const arraySize = pickedArray.length;
+
+    return arraySize;
+
+}
 
