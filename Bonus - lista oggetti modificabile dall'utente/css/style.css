@@ -24,6 +24,15 @@
 .slider_arrow{
     cursor: pointer;
 }
+.chosen_list{
+    top: 20%;
+}
+.chosen_games{
+    left: 5%;
+}
+.chosen_movies{
+    right: 5%;
+}
 
 /* HEADER */
 
@@ -42,6 +51,12 @@ main{
 }
 .list_body > div:not(.border_black){
     border: 2px solid;
+}
+.add_button{
+    left: 25%;
+}
+.remove_button{
+    right: 25%;
 }
 
 /* FOOTER */

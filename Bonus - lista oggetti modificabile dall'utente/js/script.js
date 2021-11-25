@@ -12,6 +12,12 @@ const pageMain = document.querySelector('main');
 const listWrapper = document.createElement('div');
 listWrapper.classList.add('list_wrapper', 'w-50', 'h-75');
 
+// Sezioni dei containers riempiti dall'utente
+const chosenGames = document.createElement('div');
+const chosenMovies = document.createElement('div');
+chosenGames.classList.add( 'chosen_games', 'chosen_list', 'w_10', 'h-50', 'border', 'border-3', 'border-white', 'd-flex', 'flex-column', 'align-items-center', 'position-absolute');
+chosenMovies.classList.add('chosen_movies', 'chosen_list', 'w_10', 'h-50', 'border-3', 'border_black', 'd-flex', 'flex-column', 'align-items-center', 'position-absolute');
+
 
 // Sezioni della lista, relativi stili e inserimento in pagina
 const listHead = document.createElement('div');
@@ -23,11 +29,17 @@ listWrapper.append(listHead, listBody);
 // Buttons lista superiore
 const gamesButton = document.createElement('button');
 const moviesButton = document.createElement('button');
+const addButton = document.createElement('button');
+const removeButton = document.createElement('button');
 gamesButton.classList.add('games_button', 'picked', 'btn', 'text-white', 'fs-4', 'fw-bold', 'text-uppercase');
 moviesButton.classList.add('movies_button', 'btn', 'fs-4', 'fw-bold', 'text-uppercase');
+addButton.classList.add('add_button', 'chosen_games_button', 'btn', 'text-white', 'fs-4', 'fw-bold', 'text-uppercase', 'border', 'border-3', 'border-white', 'position-fixed');
+removeButton.classList.add('remove_button', 'chosen_movies_button', 'btn', 'text-black', 'fs-4', 'fw-bold', 'text-uppercase', 'border-3', 'border_black', 'position-fixed');
 gamesButton.innerHTML = 'games';
 moviesButton.innerHTML = 'movies';
-listHead.append(gamesButton, moviesButton);
+addButton.innerHTML = 'add';
+removeButton.innerHTML = 'remove';
+listHead.append(addButton, gamesButton, moviesButton, removeButton);
 
 // Sezione lista inferiore
 const pageListNameBox = document.createElement('div');
@@ -47,7 +59,7 @@ const sliderRightArrow = document.createElement('i');
 sliderLeftArrow.classList.add('slider_arrow', 'fas', 'fa-arrow-left', 'text-white', 'fs-1');
 sliderRightArrow.classList.add('slider_arrow', 'fas', 'fa-arrow-right','text-white', 'fs-1');
 
-pageMain.append(sliderLeftArrow, listWrapper, sliderRightArrow);
+pageMain.append(chosenGames, sliderLeftArrow, listWrapper, sliderRightArrow, chosenMovies);
 
 
 // FOOTER
