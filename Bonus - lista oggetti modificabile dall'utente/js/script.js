@@ -142,30 +142,47 @@ pageListSagaBox.classList.add('h-25', 'border', 'border-3', 'border-white', 'd-f
 
 listBody.append(pageListNameBox, pageListTypeBox, pageListPriceBox, pageListSagaBox);
 
-let activeArrayIndex = 0;
-let activeArray;
+
+let activeArray = videoGames;
 let activeObject = 0;
 let numberOfKeys = 0;
 
-switch(activeArrayIndex){
-    case 0:
-        activeArray = videoGames;
-        break;
-    case 1:
-        activeArray = movies;
-        break;        
-}   
+// switch(activeArrayIndex){
+//     case 0:
+//         activeArray = videoGames;
+//         break;
+//     case 1:
+//         activeArray = movies;
+//         break;        
+// }   
 
 // Tutti gli oggetti hanno lo stesso numero di keys quindi un controllo su uno è sufficiente
-for(let key in videoGames[0]){
+for(let key in activeArray[0]){
     numberOfKeys++;
 }
 
+fillingBoxesUp(activeArray, activeObject);
 
-pageListNameBox.innerHTML = activeArray[activeObject]['name'];
-pageListTypeBox.innerHTML = activeArray[activeObject]['type'];
-pageListPriceBox.innerHTML = activeArray[activeObject]['price'];
-pageListSagaBox.innerHTML = activeArray[activeObject]['saga'];
+gamesButton.addEventListener('click', function(){
+    
+    activeArray = videoGames;
+    for(let key in activeArray[0]){
+        numberOfKeys++;
+    }    
+    fillingBoxesUp(activeArray, activeObject);
+    console.log(activeArray);
+});
+
+moviesButton.addEventListener('click', function(){
+    activeArray = movies;
+    for(let key in activeArray[0]){
+        numberOfKeys++;
+    }    
+    fillingBoxesUp(activeArray, activeObject);
+    console.log(activeArray);
+});
+
+
 
 sliderLeftArrow.addEventListener('click', function(){
 
@@ -196,3 +213,13 @@ sliderRightArrow.addEventListener('click', function(){
     pageListSagaBox.innerHTML = activeArray[activeObject]['saga'];
 
 });
+
+
+
+function fillingBoxesUp(pickedArray, pickedObject){
+    pageListNameBox.innerHTML = pickedArray[pickedObject]['name'];
+    pageListTypeBox.innerHTML = pickedArray[pickedObject]['type'];
+    pageListPriceBox.innerHTML = pickedArray[pickedObject]['price'];
+    pageListSagaBox.innerHTML = pickedArray[pickedObject]['saga'];
+};
+
