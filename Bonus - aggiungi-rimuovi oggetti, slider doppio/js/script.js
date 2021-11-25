@@ -15,9 +15,14 @@ listWrapper.classList.add('list_wrapper', 'w-50', 'h-75');
 // Sezioni dei containers riempiti dall'utente
 const chosenGames = document.createElement('div');
 const chosenMovies = document.createElement('div');
-chosenGames.classList.add( 'chosen_games', 'chosen_list', 'w_10', 'h-50', 'border', 'border-3', 'border-white', 'd-flex', 'flex-column', 'justify-content-center', 'align-items-center', 'position-absolute');
-chosenMovies.classList.add('chosen_movies', 'chosen_list', 'w_10', 'h-50', 'border-3', 'border_black', 'd-flex', 'justify-content-center', 'flex-column', 'align-items-center', 'position-absolute');
-
+const chosenGamesTitle = document.createElement('h6');
+const chosenMoviesTitle = document.createElement('h6');
+chosenGames.classList.add( 'chosen_games', 'chosen_list', 'w_10', 'h-50', 'border', 'border-3', 'border-white', 'fw-bolder', 'd-flex', 'flex-column', 'justify-content-center', 'align-items-center', 'position-absolute');
+chosenMovies.classList.add('chosen_movies', 'chosen_list', 'w_10', 'h-50', 'border-3', 'fw-bolder', 'border_black', 'd-flex', 'justify-content-center', 'flex-column', 'align-items-center', 'position-absolute');
+chosenGamesTitle.innerHTML = `Your games list`;
+chosenMoviesTitle.innerHTML = `Your movies list`;
+chosenGames.appendChild(chosenGamesTitle);
+chosenMovies.appendChild(chosenMoviesTitle);
 
 // Sezioni della lista, relativi stili e inserimento in pagina
 const listHead = document.createElement('div');
@@ -175,10 +180,19 @@ addButton.addEventListener('click', function(){
 removeButton.addEventListener('click', function(){
     if(activeArray === videoGames){
         chosenGamesList.splice(0);
-        chosenGames.innerHTML = chosenGamesList;
+        chosenGames.innerHTML =  chosenGamesList;
+
+        // Debug necessario
+        chosenGames.appendChild(chosenGamesTitle);
+        chosenGamesTitle.innerHTML = `Your games list`;
+
     } else{
         chosenMoviesList.splice(0);
         chosenMovies.innerHTML = chosenMoviesList;
+
+        // Debug necessario
+        chosenMovies.appendChild(chosenMoviesTitle);
+        chosenMoviesTitle.innerHTML = `Your movies list`;
     }
     
 });

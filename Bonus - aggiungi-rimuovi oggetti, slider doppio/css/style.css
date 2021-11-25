@@ -29,6 +29,8 @@
 }
 .chosen_games{
     left: 5%;
+    color: white;
+    font-weight: bold;
 }
 .chosen_movies{
     right: 5%;
@@ -59,6 +61,12 @@ main{
 .remove_button{
     right: 25%;
     border: 2px solid;
+}
+.chosen_list h6{
+    text-transform: uppercase;
+    font-weight: bolder;
+    position: absolute;
+    top: 2.5%;
 }
 
 /* FOOTER */
