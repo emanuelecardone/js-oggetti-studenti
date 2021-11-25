@@ -23,8 +23,8 @@ listWrapper.append(listHead, listBody);
 // Buttons lista superiore
 const gamesButton = document.createElement('button');
 const moviesButton = document.createElement('button');
-gamesButton.classList.add('games_button', 'picked', 'btn', 'text-white', 'position-fixed', 'fs-4', 'fw-bold', 'text-uppercase');
-moviesButton.classList.add('movies_button', 'btn', 'text-white', 'position-fixed', 'fs-4', 'fw-bold', 'text-uppercase');
+gamesButton.classList.add('games_button', 'picked', 'btn', 'text-white', 'fs-4', 'fw-bold', 'text-uppercase');
+moviesButton.classList.add('movies_button', 'btn', 'fs-4', 'fw-bold', 'text-uppercase');
 gamesButton.innerHTML = 'games';
 moviesButton.innerHTML = 'movies';
 listHead.append(gamesButton, moviesButton);
@@ -34,10 +34,10 @@ const pageListNameBox = document.createElement('div');
 const pageListTypeBox = document.createElement('div');
 const pageListPriceBox = document.createElement('div');
 const pageListSagaBox = document.createElement('div');
-pageListNameBox.classList.add('h-25', 'border', 'border-3', 'border-white', 'd-flex', 'justify-content-center', 'align-items-center', 'text-white', 'fs-5', 'fw-bold');
-pageListTypeBox.classList.add('h-25', 'border', 'border-3', 'border-white', 'd-flex', 'justify-content-center', 'align-items-center', 'text-white', 'fs-5', 'fw-bold');
-pageListPriceBox.classList.add('h-25', 'border', 'border-3', 'border-white', 'd-flex', 'justify-content-center', 'align-items-center', 'text-white', 'fs-5', 'fw-bold');
-pageListSagaBox.classList.add('h-25', 'border', 'border-3', 'border-white', 'd-flex', 'justify-content-center', 'align-items-center', 'text-white', 'fs-5', 'fw-bold');
+pageListNameBox.classList.add('h-25', 'border-3', 'd-flex', 'justify-content-center', 'align-items-center', 'text-white', 'fs-5', 'fw-bold');
+pageListTypeBox.classList.add('h-25', 'border-3', 'd-flex', 'justify-content-center', 'align-items-center', 'text-white', 'fs-5', 'fw-bold');
+pageListPriceBox.classList.add('h-25', 'border-3', 'd-flex', 'justify-content-center', 'align-items-center', 'text-white', 'fs-5', 'fw-bold');
+pageListSagaBox.classList.add('h-25', 'border-3', 'd-flex', 'justify-content-center', 'align-items-center', 'text-white', 'fs-5', 'fw-bold');
 
 listBody.append(pageListNameBox, pageListTypeBox, pageListPriceBox, pageListSagaBox);
 
@@ -129,6 +129,7 @@ let activeArray = videoGames;
 let arrayWidth = decidingArrayLength(activeArray);
 let activeObject = 0;
 let numberOfKeys = decidingHowManyKeys(activeArray);
+let currentColor = `white`;
 
 fillingBoxesUp(activeArray, activeObject);
 
@@ -137,6 +138,9 @@ fillingBoxesUp(activeArray, activeObject);
 
 gamesButton.addEventListener('click', function(){
     
+    lastColor = `black`;
+    currentColor = `white`;
+    switchingBlackWhite(lastColor, currentColor);
     moviesButton.classList.remove('picked');
     gamesButton.classList.add('picked');
     activeArray = videoGames;
@@ -148,6 +152,9 @@ gamesButton.addEventListener('click', function(){
 
 moviesButton.addEventListener('click', function(){
 
+    lastColor = `white`;
+    currentColor = `black`;
+    switchingBlackWhite(lastColor, currentColor);
     gamesButton.classList.remove('picked');
     moviesButton.classList.add('picked');
     activeArray = movies;
@@ -185,18 +192,29 @@ sliderRightArrow.addEventListener('click', function(){
 
 
 function fillingBoxesUp(pickedArray, pickedObject){
+
+    let textColor;
+
+    switch(pickedArray){
+        case videoGames:
+            textColor = 'white';
+            break;
+        case movies:
+            textColor = 'black';
+            break;
+    }
     
     pageListNameBox.innerHTML = `
-        <span class="fs-2 text-center">Name:<br><span class="fs-4">${pickedArray[pickedObject]['name']}</span></span>
+        <span class="fs-2 text-center text-${textColor}">Name:<br><span class="fs-4">${pickedArray[pickedObject]['name']}</span></span>
     `;
     pageListTypeBox.innerHTML = `
-        <span class="fs-2 text-center">Type:<br><span class="fs-4">${pickedArray[pickedObject]['type']}</span></span>
+        <span class="fs-2 text-center text-${textColor}">Type:<br><span class="fs-4">${pickedArray[pickedObject]['type']}</span></span>
     `;
     pageListPriceBox.innerHTML = `
-        <span class="fs-2 text-center">Price:<br><span class="fs-4">${pickedArray[pickedObject]['price']}</span></span>
+        <span class="fs-2 text-center text-${textColor}">Price:<br><span class="fs-4">${pickedArray[pickedObject]['price']}</span></span>
     `;
     pageListSagaBox.innerHTML = `
-        <span class="fs-2 text-center">Saga:<br><span class="fs-4">${pickedArray[pickedObject]['saga']}</span></span>
+        <span class="fs-2 text-center text-${textColor}">Saga:<br><span class="fs-4">${pickedArray[pickedObject]['saga']}</span></span>
     `;
 };
 
@@ -216,3 +234,19 @@ function decidingArrayLength(pickedArray){
 
 }
 
+function switchingBlackWhite(prevColor, pickedColor){
+
+    pageListNameBox.classList.remove(`border_${prevColor}`);
+    pageListTypeBox.classList.remove(`border_${prevColor}`);
+    pageListPriceBox.classList.remove(`border_${prevColor}`);
+    pageListSagaBox.classList.remove(`border_${prevColor}`);
+    sliderLeftArrow.classList.remove(`text-${prevColor}`);
+    sliderRightArrow.classList.remove(`text-${prevColor}`);
+
+    pageListNameBox.classList.add(`border_${pickedColor}`);
+    pageListTypeBox.classList.add(`border_${pickedColor}`);
+    pageListPriceBox.classList.add(`border_${pickedColor}`);
+    pageListSagaBox.classList.add(`border_${pickedColor}`);
+    sliderLeftArrow.classList.add(`text-${pickedColor}`);
+    sliderRightArrow.classList.add(`text-${pickedColor}`);
+}

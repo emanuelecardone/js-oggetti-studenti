@@ -7,10 +7,19 @@
     box-shadow: none;
 }
 .btn{
-    border: 2px solid white;
+    position: fixed;
 }
 .btn.picked{
     animation: button_borders .5s linear infinite;
+}
+.text-black{
+    color: black;
+}
+.border_white{
+    border: solid white;
+}
+.border_black{
+    border: solid black;
 }
 
 /* HEADER */
@@ -22,9 +31,14 @@ main{
 }
 .movies_button{
     right: calc(50% - 150px);
+    border: 2px solid black;
 }
 .games_button{
     left: calc(50% - 150px);
+    border: 2px solid white;
+}
+.list_body > div:not(.border_black){
+    border: 2px solid;
 }
 
 /* FOOTER */
@@ -39,12 +53,12 @@ main{
 /* ANIMAZIONI */
 @keyframes button_borders{
     0%{
-        border: 2px solid white;;
+        border: 2px solid ;
     }
     50%{
-        border: 4px solid white;
+        border: 4px solid ;
     }
     100%{
-        border: 2px solid white;
+        border: 2px solid ;
     }
 }
