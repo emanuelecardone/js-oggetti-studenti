@@ -1,85 +1,116 @@
 // HEADER
 const pageHeader = document.querySelector('header');
-// Titolo header, relative classi e inserimento in pagina
+
+// Titolo header, relative classi, contenuto e inserimento in pagina
+// Variabile
 const headerTitle = document.createElement('h1');
-headerTitle.innerHTML = 'Your objects list';
+// Classi di stile
 headerTitle.classList.add('text-white', 'mb-0');
+// Contenuto
+headerTitle.innerHTML = 'Your objects list';
+// Inserimento in pagina
 pageHeader.appendChild(headerTitle);
+
 
 // MAIN
 const pageMain = document.querySelector('main');
-// Box contentente la lista, relative classi e inserimento in pagina
+
+// Box contentente la lista
+// Variabile
 const listWrapper = document.createElement('div');
+// Classi di stile
 listWrapper.classList.add('list_wrapper', 'w-50', 'h-75');
 
-// Sezioni dei containers riempiti dall'utente
+// Sezioni dei containers riempiti dall'utente e relativi titoli
+// Variabili 
 const chosenGames = document.createElement('div');
 const chosenMovies = document.createElement('div');
 const chosenGamesTitle = document.createElement('h6');
 const chosenMoviesTitle = document.createElement('h6');
+// Classi di stile
 chosenGames.classList.add( 'chosen_games', 'chosen_list', 'w_10', 'h-50', 'border', 'border-3', 'border-white', 'fw-bolder', 'd-flex', 'flex-column', 'justify-content-center', 'align-items-center', 'position-absolute');
 chosenMovies.classList.add('chosen_movies', 'chosen_list', 'w_10', 'h-50', 'border-3', 'fw-bolder', 'border_black', 'd-flex', 'justify-content-center', 'flex-column', 'align-items-center', 'position-absolute');
+chosenGamesTitle.classList.add('text-uppercase', 'text-center', 'fw-bolder', 'position-absolute');
+chosenMoviesTitle.classList.add('text-uppercase', 'text-center', 'fw-bolder', 'position-absolute');
+// Contenuto
 chosenGamesTitle.innerHTML = `Your games list`;
 chosenMoviesTitle.innerHTML = `Your movies list`;
+// Inserimento in pagina
 chosenGames.appendChild(chosenGamesTitle);
 chosenMovies.appendChild(chosenMoviesTitle);
 
-// Sezioni della lista, relativi stili e inserimento in pagina
+// Sezioni della lista
+// Variabili
 const listHead = document.createElement('div');
 const listBody = document.createElement('div');
+// Classi di stile
 listHead.classList.add('list_head', 'w-100', 'h_15', 'd-flex', 'justify-content-center', 'align-items-center');
 listBody.classList.add('list_body', 'w-100', 'h_85', 'd-flex', 'flex-column');
+// Inserimento in pagina
 listWrapper.append(listHead, listBody);
 
 // Buttons lista superiore
+// Variabili
 const gamesButton = document.createElement('button');
 const moviesButton = document.createElement('button');
 const addButton = document.createElement('button');
 const removeButton = document.createElement('button');
+// Classi di stile
 gamesButton.classList.add('games_button', 'picked', 'btn', 'text-white', 'fs-4', 'fw-bold', 'text-uppercase');
 moviesButton.classList.add('movies_button', 'btn', 'fs-4', 'fw-bold', 'text-uppercase');
-addButton.classList.add('add_button', 'chosen_games_button', 'btn', 'text-white', 'fs-4', 'fw-bold', 'text-uppercase', 'border-3', 'position-fixed');
-removeButton.classList.add('remove_button', 'chosen_movies_button', 'btn', 'text-white', 'fs-4', 'fw-bold', 'text-uppercase', 'border-3', 'position-fixed');
+addButton.classList.add('add_button', 'chosen_button', 'btn', 'text-white', 'fw-bold', 'text-uppercase', 'border-3', 'position-fixed');
+removeButton.classList.add('remove_button', 'chosen_button', 'btn', 'text-white', 'fw-bold', 'text-uppercase', 'border-3', 'position-fixed');
+// Contenuto
 gamesButton.innerHTML = 'games';
 moviesButton.innerHTML = 'movies';
 addButton.innerHTML = 'add to list';
 removeButton.innerHTML = 'empty list';
+// Inserimento in pagina
 listHead.append(addButton, gamesButton, moviesButton, removeButton);
 
 // Sezione lista inferiore
+// Variabili
 const pageListNameBox = document.createElement('div');
 const pageListTypeBox = document.createElement('div');
 const pageListPriceBox = document.createElement('div');
 const pageListSagaBox = document.createElement('div');
-pageListNameBox.classList.add('h-25', 'border-3', 'd-flex', 'justify-content-center', 'align-items-center', 'text-white', 'fs-5', 'fw-bold');
-pageListTypeBox.classList.add('h-25', 'border-3', 'd-flex', 'justify-content-center', 'align-items-center', 'text-white', 'fs-5', 'fw-bold');
-pageListPriceBox.classList.add('h-25', 'border-3', 'd-flex', 'justify-content-center', 'align-items-center', 'text-white', 'fs-5', 'fw-bold');
-pageListSagaBox.classList.add('h-25', 'border-3', 'd-flex', 'justify-content-center', 'align-items-center', 'text-white', 'fs-5', 'fw-bold');
-
+// Classi di stile
+pageListNameBox.classList.add('h-25', 'border-3', 'd-flex', 'justify-content-center', 'align-items-center', 'text-white', 'fw-bold');
+pageListTypeBox.classList.add('h-25', 'border-3', 'd-flex', 'justify-content-center', 'align-items-center', 'text-white', 'fw-bold');
+pageListPriceBox.classList.add('h-25', 'border-3', 'd-flex', 'justify-content-center', 'align-items-center', 'text-white', 'fw-bold');
+pageListSagaBox.classList.add('h-25', 'border-3', 'd-flex', 'justify-content-center', 'align-items-center', 'text-white', 'fw-bold');
+// Inserimento in pagina
 listBody.append(pageListNameBox, pageListTypeBox, pageListPriceBox, pageListSagaBox);
 
 // Arrows
+// Variabili
 const sliderLeftArrow = document.createElement('i');
 const sliderRightArrow = document.createElement('i');
+// Classi di stile
 sliderLeftArrow.classList.add('slider_arrow', 'fas', 'fa-arrow-left', 'text-white', 'fs-1');
 sliderRightArrow.classList.add('slider_arrow', 'fas', 'fa-arrow-right','text-white', 'fs-1');
 
+// Inserimento in pagina nel main di tutti i suoi contenuti
 pageMain.append(chosenGames, sliderLeftArrow, listWrapper, sliderRightArrow, chosenMovies);
 
 
 // FOOTER
 const pageFooter = document.querySelector('footer');
-// Wrapper decorazione footer, classi ai sottoelementi e inserimento del tutto in pagina
+
+// Decoration wrapper, aside lines, star container, star
+// Variabili 
 const footerDecorationWrapper = document.createElement('div');
 const leftFooterDecoration = document.createElement('div');
 const middleFooterDecoration = document.createElement('div');
 const footerStar = document.createElement('i');
 const rightFooterDecoration = document.createElement('div');
+// Classi di stile
 footerDecorationWrapper.classList.add('footer_decoration_wrapper', 'w-50', 'h-50', 'd-flex', 'justify-content-between', 'align-items-center');
 leftFooterDecoration.classList.add('side_footer_decoration', 'border', 'border-2', 'border-white', 'rounded');
 middleFooterDecoration.classList.add('middle_footer_decoration', 'h_20p', 'd-flex', 'justify-content-center', 'align-items-center');
 footerStar.classList.add('footer_star','text-white', 'fas', 'fa-star', 'fs-3');
 rightFooterDecoration.classList.add('side_footer_decoration', 'border', 'border-2', 'border-white');
+// Inserimento in pagina
 pageFooter.appendChild(footerDecorationWrapper);
 footerDecorationWrapper.append(leftFooterDecoration, middleFooterDecoration, rightFooterDecoration);
 middleFooterDecoration.appendChild(footerStar);
@@ -87,6 +118,7 @@ middleFooterDecoration.appendChild(footerStar);
 
 // OBJECTS
 
+// Primo dei due array di oggetti (corrisponde allo slider bianco)
 const videoGames = [
     {
         name: 'Grand Theft Auto',
@@ -120,6 +152,7 @@ const videoGames = [
     }
 ];
 
+// Secondo dei due array di oggetti (corrisponde allo slider nero)
 const movies = [
     {
         name: 'Harry Potter',
@@ -142,34 +175,50 @@ const movies = [
 ];
 
 // FLAG PER I DUE SLIDER
+
+// Definisce quale dei due array di oggetti è attivo
 let activeArray = videoGames;
+// Richiamo alla funzione che ritorna quanti click servono a raggiungere il limite dei 2 slider (3 o 5)
 let arrayWidth = decidingArrayLength(activeArray);
+// Individua l'active attuale
 let activeObject = 0;
+// Richiamo alla funzione che individua il numero di keys di un oggetto
 let numberOfKeys = decidingHowManyKeys(activeArray);
+// Debug
 let currentColor = `white`;
 
+// Richiamo alla funzione che riempie la lista centrale
 fillingBoxesUp(activeArray, activeObject);
+
+// Creo una copia dell'array degli oggetti (mi serve per riempire/svuotare le liste ai lati al click add o remove)
+const chosenGamesList = [];
+const chosenMoviesList = [];
+
 
 // FUNCTIONS
 
-// Creo una copia dell'array degli oggetti
-const chosenGamesList = [];
-
-const chosenMoviesList = [];
-console.log(chosenGamesList + chosenMoviesList);
-
+// Funzione che aggiunge games nella lista bianca oppure movies nella lista nera
+//
+// - No argomenti
+//
+// -> No return
+//
+// Descrizione:
+// Se l'array di oggetti attivo è videoGames, aggiunge nella lista bianca, sennò nella nera
+// L'oggetto viene anche aggiunto ad un array che servirà dopo per svuotare
+// Inoltre aggiunge solo se quell'oggetto non è già presente
 addButton.addEventListener('click', function(){
     if(activeArray === videoGames){
         if(!(chosenGamesList.includes(videoGames[activeObject]['name']))){
             chosenGamesList.push(videoGames[activeObject]['name']);
-            chosenGames.innerHTML += `<div>${videoGames[activeObject]['name']}</div>`;
+            chosenGames.innerHTML += `<div class="text-center mb-1">${videoGames[activeObject]['name']}</div>`;
         }
         console.log(videoGames[activeObject]['name']);
         console.log(activeObject);
     } else{
         if(!(chosenMoviesList.includes(movies[activeObject]['name']))){
             chosenMoviesList.push(movies[activeObject]['name']);
-            chosenMovies.innerHTML += `<div>${movies[activeObject]['name']}</div>`;
+            chosenMovies.innerHTML += `<div class="text-center mb-1">${movies[activeObject]['name']}</div>`;
         }
         console.log(videoGames[activeObject]['name']);
         console.log(activeObject);
@@ -177,6 +226,16 @@ addButton.addEventListener('click', function(){
     
 });
 
+// Funzione che svuota la lista games oppure quella movies
+//
+// - No argomenti
+//
+// -> No return
+//
+// Descrizione:
+// Se l'array di oggetti attivo è videoGames, svuota la lista bianca, sennò la nera
+// L'array viene svuotato completamente da splice e nella pagina viene inserito quell'array, quindi si vuota
+// IL debug è per non far sparire anche il titolo quando clicko empty
 removeButton.addEventListener('click', function(){
     if(activeArray === videoGames){
         chosenGamesList.splice(0);
@@ -197,7 +256,19 @@ removeButton.addEventListener('click', function(){
     
 });
 
-
+// Funzione che porta l'utente allo slider che riguarda i giochi
+//
+// - No argomenti
+//
+// -> No return
+//
+// Descrizione:
+// Se lo slider attivo è movies(nero), passa allo slider videoGames(bianco)
+// Richiama una funzione che colora tutto di bianco alla quale passa 2 variabili (colore precedente e attuale)
+// Rimuove l'animazione dal pulsante Movies e l'assegna a se stesso (picked)
+// Imposta l'elemento attivo su videoGames e resetta il counter al primo oggetto
+// Richiama il numero di chiavi dell'oggetto per adattarsi al cambio
+// Richiama la funzione che riempie la lista centrale
 gamesButton.addEventListener('click', function(){
     
     lastColor = `black`;
@@ -212,6 +283,19 @@ gamesButton.addEventListener('click', function(){
 
 });
 
+// Funzione che porta l'utente allo slider che riguarda i film
+//
+// - No argomenti
+//
+// -> No return
+//
+// Descrizione:
+// Se lo slider attivo è videoGames(bianco), passa allo slider movies(nero)
+// Richiama una funzione che colora tutto di nero alla quale passa 2 variabili (colore precedente e attuale)
+// Rimuove l'animazione dal pulsante Games e l'assegna a se stesso (picked)
+// Imposta l'elemento attivo su movies e resetta il counter al primo oggetto
+// Richiama una funzione che ritorna il numero di chiavi dell'oggetto per adattarsi al cambio
+// Richiama la funzione che riempie la lista centrale
 moviesButton.addEventListener('click', function(){
 
     lastColor = `white`;
@@ -226,11 +310,19 @@ moviesButton.addEventListener('click', function(){
     
 });
 
-
+// Funzione slider che scorre gli oggetti dell'array verso sinistra
+//
+// - No argomenti
+//
+// -> No return
+//
+// Descrizione:
+// Richiama una funzione che definisce quanto è lungo l'array (quindi se 3 o 5)
+// Usa questa lunghezza per definire dopo quanti click il counter activeObject si azzera
+// Richiama una funzione che riempie la lista centrale in base all'array e l'oggetto attivo
 sliderLeftArrow.addEventListener('click', function(){
 
     arrayWidth = decidingArrayLength(activeArray);
-    numberOfKeys = decidingHowManyKeys(activeArray);
     if(activeObject === 0){
         activeObject = arrayWidth - 1;
     } else{
@@ -240,6 +332,16 @@ sliderLeftArrow.addEventListener('click', function(){
 
 });
 
+// Funzione slider che scorre gli oggetti dell'array verso destra
+//
+// - No argomenti
+//
+// -> No return
+//
+// Descrizione:
+// Richiama una funzione che definisce quanto è lungo l'array (quindi se 3 o 5)
+// Usa questa lunghezza per definire dopo quanti click il counter activeObject si azzera
+// Richiama una funzione che riempie la lista centrale in base all'array e l'oggetto attivo
 sliderRightArrow.addEventListener('click', function(){
 
     arrayWidth = decidingArrayLength(activeArray);
@@ -252,7 +354,16 @@ sliderRightArrow.addEventListener('click', function(){
 
 });
 
-
+// Funzione che riempie la lista centrale della pagina con le keys dell'oggetto attivo
+//
+// - pickedArray: Corrisponde all'array di oggetti scelto (games o movies)
+// - pickedObject: Corrisponde all'oggetto scelto 
+//
+// -> No return
+//
+// Descrizione:
+// Variabile flag per determinare con quale colore stampo in pagina (in base allo slider attivo)
+// Inserimento in pagina nella lista centrale delle 4 keys dell'oggetto attivo dell'array attivo
 function fillingBoxesUp(pickedArray, pickedObject){
 
     let textColor;
@@ -267,19 +378,29 @@ function fillingBoxesUp(pickedArray, pickedObject){
     }
     
     pageListNameBox.innerHTML = `
-        <span class="fs-2 text-center text-${textColor}">Name:<br><span class="fs-4">${pickedArray[pickedObject]['name']}</span></span>
+        <span class="key_text text-center text-${textColor}">Name:<br><span class="key_nested_text">${pickedArray[pickedObject]['name']}</span></span>
     `;
     pageListTypeBox.innerHTML = `
-        <span class="fs-2 text-center text-${textColor}">Type:<br><span class="fs-4">${pickedArray[pickedObject]['type']}</span></span>
+        <span class="key_text text-center text-${textColor}">Type:<br><span class="key_nested_text">${pickedArray[pickedObject]['type']}</span></span>
     `;
     pageListPriceBox.innerHTML = `
-        <span class="fs-2 text-center text-${textColor}">Price:<br><span class="fs-4">${pickedArray[pickedObject]['price']}</span></span>
+        <span class="key_text text-center text-${textColor}">Price:<br><span class="key_nested_text">${pickedArray[pickedObject]['price']}</span></span>
     `;
     pageListSagaBox.innerHTML = `
-        <span class="fs-2 text-center text-${textColor}">Saga:<br><span class="fs-4">${pickedArray[pickedObject]['saga']}</span></span>
+        <span class="key_text text-center text-${textColor}">Saga:<br><span class="key_nested_text">${pickedArray[pickedObject]['saga']}</span></span>
     `;
 };
 
+// Funzione che definisce il numero di keys di un oggetto
+//
+// - pickedArray: Corrisponde all'array di oggetti scelto (games o movies)
+//
+// -> return: keysAmount, numero di keys dell'oggetto
+//
+// Descrizione:
+// Parte un ciclo for in, che percorre tutto l'oggetto
+// In questo caso, tutti gli oggetti devono avere 4 keys per riempire tutta la lista centrale, sia giochi che film
+// Perciò percorro solo un oggetto
 function decidingHowManyKeys(pickedArray){
     
     let keysAmount = 0;
@@ -289,13 +410,31 @@ function decidingHowManyKeys(pickedArray){
     return keysAmount;
 };
 
+// Funzione che determina il numero di oggetti in un array
+//
+// - pickedArray: Corrisponde all'array di oggetti scelto (games o movies)
+//
+// -> return: arraySize, corrisponde alla lunghezza dell'array di oggetti
+//
+// Descrizione: 
+// Funzione molto semplice, legge la lunghezza dell'array e la ritorna. Posso richiamarla più volte
 function decidingArrayLength(pickedArray){
 
     const arraySize = pickedArray.length;
     return arraySize;
-
 }
 
+// Funzione che asseggna tutti gli stili di bianco o nero per lo slider attivo
+//
+// - prevColor: una variabile flag che rappresenta lo slider attuale (che deve essere cambiato)
+// - pickedColor: una variabile flag che rappresenta lo slider che l'utente vuole selezionare
+//
+// -> No return
+//
+// Descrizione:
+// Rimuove il colore bianco se lo slider attivo è games, altrimenti il nero
+// Aggiunge il colore nero se lo slider attivo è games, altrimenti il bianco
+// I target sono: pulsanti add/remove, bordi della lista centrale, frecce dello slider
 function switchingBlackWhite(prevColor, pickedColor){
 
     addButton.classList.remove(`border_${prevColor}`, `text-${prevColor}`);

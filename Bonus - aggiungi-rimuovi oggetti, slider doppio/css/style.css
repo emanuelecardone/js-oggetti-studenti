@@ -1,14 +1,17 @@
 /* COMMON */
 
+/* Common style */
 .my_green_bg{
     background-color: #9cdab5;
 }
 .btn:focus{
     box-shadow: none;
 }
+/* Debug animazione */
 .btn{
     position: fixed;
 }
+/* Stili che servono da debug */
 .btn.picked{
     animation: button_borders .5s linear infinite;
 }
@@ -21,64 +24,94 @@
 .border_black{
     border: solid black;
 }
+
 .slider_arrow{
     cursor: pointer;
 }
+
+
+/* HEADER */
+
+
+/* MAIN */
+
+/* Il gap serve per gestire le arrows */
+main{
+    height: calc(100vh - 175px);
+    gap: 20px;
+}
+/* Chosen */
 .chosen_list{
     top: 20%;
 }
+.chosen_list h6{
+    font-size: .75rem;
+    top: 2.5%;
+}
+.chosen_movies{
+    right: 5%;
+}
+/* Chosen games */
 .chosen_games{
     left: 5%;
     color: white;
     font-weight: bold;
 }
+/* Chosen movies */
 .chosen_movies{
     right: 5%;
 }
-
-/* HEADER */
-
-/* MAIN */
-main{
-    height: calc(100vh - 175px);
-    gap: 50px;
-}
+/* Movies button */
 .movies_button{
+    top: 15%;
     right: calc(50% - 150px);
     border: 2px solid black;
 }
+/* Games button */
 .games_button{
+    top: 15%;
     left: calc(50% - 150px);
     border: 2px solid white;
 }
+/* Debug */
 .list_body > div:not(.border_black){
     border: 2px solid;
 }
+/* Testo nella lista centrale */
+.key_text{
+    font-size: 1.25rem;
+}
+.key_nested_text{
+    font-size: 1rem;
+}
+/* Add button */
 .add_button{
     left: 25%;
     border: 2px solid;
 }
+/* Remove button */
 .remove_button{
     right: 25%;
     border: 2px solid;
 }
-.chosen_list h6{
-    text-transform: uppercase;
-    font-weight: bolder;
-    position: absolute;
-    top: 2.5%;
-}
+
 
 /* FOOTER */
+
+/* Linee laterali */
 .side_footer_decoration{
     width: calc((100% - 100px) / 2 );
     height: 1px;
 }
+/* Fa-star */
 .middle_footer_decoration{
     width: 20px;
 }
 
+
 /* ANIMAZIONI */
+
+/* Animazione bottoni Games - Movies */
 @keyframes button_borders{
     0%{
         border: 2px solid ;
@@ -88,5 +121,30 @@ main{
     }
     100%{
         border: 2px solid ;
+    }
+}
+
+
+/* MEDIA */
+
+@media screen and (min-width: 768px){
+    .key_text{
+        font-size: calc(1.325rem + .9vw)
+    }
+    .key_nested_text{
+        font-size: calc(1.275rem + .3vw)
+    }
+}
+@media screen and (min-width: 992px){
+    .chosen_button{
+        font-size: 1.5rem;
+    }
+}
+@media screen and (min-width: 1200px){
+    main{
+        gap: 50px;
+    }
+    .chosen_list h6{
+        font-size: 1rem;
     }
 }
