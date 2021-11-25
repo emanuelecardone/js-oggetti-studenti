@@ -21,14 +21,14 @@ pageHeader.appendChild(headerTitle);
 const pageMain = document.querySelector('main');
 // Box contentente la lista, relative classi e inserimento in pagina
 const listWrapper = document.createElement('div');
-listWrapper.classList.add('list_wrapper', 'w-50', 'h-75', 'border', 'border-5', 'border-white', 'rounded');
+listWrapper.classList.add('list_wrapper', 'w-50', 'h-75');
 pageMain.appendChild(listWrapper);
 
 // Sezioni della lista, relativi stili e inserimento in pagina
 const listHead = document.createElement('div');
 const listBody = document.createElement('div');
-listHead.classList.add('list_head', 'w-100', 'h_15', 'd-flex', 'justify-content-center', 'align-items-center', 'border-bottom', 'border-5', 'border-white');
-listBody.classList.add('list_body', 'w-100', 'h_85');
+listHead.classList.add('list_head', 'w-100', 'h_15', 'd-flex', 'justify-content-center', 'align-items-center', 'border', 'border-3', 'border-white');
+listBody.classList.add('list_body', 'w-100', 'h_85', 'd-flex', 'flex-column');
 listWrapper.append(listHead, listBody);
 
 // Titolo lista superiore
@@ -117,3 +117,20 @@ const movies = [
 
 
 
+// TEST
+const pageListNameBox = document.createElement('div');
+const pageListTypeBox = document.createElement('div');
+const pageListPriceBox = document.createElement('div');
+const pageListSagaBox = document.createElement('div');
+
+pageListNameBox.classList.add('h-25', 'border', 'border-3', 'border-white', 'd-flex', 'justify-content-center', 'align-items-center', 'text-white', 'fs-5', 'fw-bold');
+pageListTypeBox.classList.add('h-25', 'border', 'border-3', 'border-white', 'd-flex', 'justify-content-center', 'align-items-center', 'text-white', 'fs-5', 'fw-bold');
+pageListPriceBox.classList.add('h-25', 'border', 'border-3', 'border-white', 'd-flex', 'justify-content-center', 'align-items-center', 'text-white', 'fs-5', 'fw-bold');
+pageListSagaBox.classList.add('h-25', 'border', 'border-3', 'border-white', 'd-flex', 'justify-content-center', 'align-items-center', 'text-white', 'fs-5', 'fw-bold');
+
+listBody.append(pageListNameBox, pageListTypeBox, pageListPriceBox, pageListSagaBox);
+
+pageListNameBox.innerHTML = videoGames[0]['name'];
+pageListTypeBox.innerHTML = videoGames[0]['type'];
+pageListPriceBox.innerHTML = videoGames[0]['price'];
+pageListSagaBox.innerHTML = videoGames[0]['saga'];
