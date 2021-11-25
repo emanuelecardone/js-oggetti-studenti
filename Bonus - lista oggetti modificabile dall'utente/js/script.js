@@ -31,11 +31,14 @@ listHead.classList.add('list_head', 'w-100', 'h_15', 'd-flex', 'justify-content-
 listBody.classList.add('list_body', 'w-100', 'h_85', 'd-flex', 'flex-column');
 listWrapper.append(listHead, listBody);
 
-// Titolo lista superiore
-const listHeadTitle = document.createElement('h2');
-listHeadTitle.innerHTML = 'Add or remove anything you wish';
-listHeadTitle.classList.add('text-white', 'mb-0');
-listHead.appendChild(listHeadTitle);
+// Buttons lista superiore
+const gamesButton = document.createElement('button');
+const moviesButton = document.createElement('button');
+gamesButton.classList.add('btn', 'text-white', 'me-1', 'border', 'border-2', 'border-white', 'fs-4', 'fw-bold', 'text-uppercase');
+moviesButton.classList.add('btn', 'text-white', 'ms-1', 'border', 'border-2', 'border-white', 'fs-4', 'fw-bold', 'text-uppercase');
+gamesButton.innerHTML = 'games';
+moviesButton.innerHTML = 'movies';
+listHead.append(gamesButton, moviesButton);
 
 // Footer
 const pageFooter = document.querySelector('footer');
@@ -139,20 +142,30 @@ pageListSagaBox.classList.add('h-25', 'border', 'border-3', 'border-white', 'd-f
 
 listBody.append(pageListNameBox, pageListTypeBox, pageListPriceBox, pageListSagaBox);
 
+let activeArrayIndex = 0;
+let activeArray;
 let activeObject = 0;
 let numberOfKeys = 0;
+
+switch(activeArrayIndex){
+    case 0:
+        activeArray = videoGames;
+        break;
+    case 1:
+        activeArray = movies;
+        break;        
+}   
 
 // Tutti gli oggetti hanno lo stesso numero di keys quindi un controllo su uno è sufficiente
 for(let key in videoGames[0]){
     numberOfKeys++;
 }
-console.log(numberOfKeys);
 
 
-pageListNameBox.innerHTML = videoGames[activeObject]['name'];
-pageListTypeBox.innerHTML = videoGames[activeObject]['type'];
-pageListPriceBox.innerHTML = videoGames[activeObject]['price'];
-pageListSagaBox.innerHTML = videoGames[activeObject]['saga'];
+pageListNameBox.innerHTML = activeArray[activeObject]['name'];
+pageListTypeBox.innerHTML = activeArray[activeObject]['type'];
+pageListPriceBox.innerHTML = activeArray[activeObject]['price'];
+pageListSagaBox.innerHTML = activeArray[activeObject]['saga'];
 
 sliderLeftArrow.addEventListener('click', function(){
 
@@ -161,14 +174,11 @@ sliderLeftArrow.addEventListener('click', function(){
     } else{
         activeObject--;
     }
-    
 
-    console.log(activeObject);
-
-    pageListNameBox.innerHTML = videoGames[activeObject]['name'];
-    pageListTypeBox.innerHTML = videoGames[activeObject]['type'];
-    pageListPriceBox.innerHTML = videoGames[activeObject]['price'];
-    pageListSagaBox.innerHTML = videoGames[activeObject]['saga'];
+    pageListNameBox.innerHTML = activeArray[activeObject]['name'];
+    pageListTypeBox.innerHTML = activeArray[activeObject]['type'];
+    pageListPriceBox.innerHTML = activeArray[activeObject]['price'];
+    pageListSagaBox.innerHTML = activeArray[activeObject]['saga'];
 
 });
 
@@ -180,15 +190,9 @@ sliderRightArrow.addEventListener('click', function(){
         activeObject++;
     }
     
-    
-
-    console.log(activeObject);
-
-    console.log(videoGames[0])
-
-    pageListNameBox.innerHTML = videoGames[activeObject]['name'];
-    pageListTypeBox.innerHTML = videoGames[activeObject]['type'];
-    pageListPriceBox.innerHTML = videoGames[activeObject]['price'];
-    pageListSagaBox.innerHTML = videoGames[activeObject]['saga'];
+    pageListNameBox.innerHTML = activeArray[activeObject]['name'];
+    pageListTypeBox.innerHTML = activeArray[activeObject]['type'];
+    pageListPriceBox.innerHTML = activeArray[activeObject]['price'];
+    pageListSagaBox.innerHTML = activeArray[activeObject]['saga'];
 
 });
