@@ -1,15 +1,4 @@
-// Descrizione:
-// Creare un oggetto che descriva uno studente, con le seguenti proprietà: nome, cognome e età.
-// Stampare a schermo attraverso un ciclo for-in tutte le proprietà dell'oggetto.
-// Creare un array di oggetti di studenti.
-// Ciclare su tutti gli studenti e stampare per ognuno di essi, nome e cognome.
-// Dare la possibilità all’utente, attraverso 3 prompt(), di aggiungere un nuovo oggetto studente inserendo nell’ordine: nome, cognome e età.
-
-
-// INIZIO QUI 
-
-
-// Header
+// HEADER
 const pageHeader = document.querySelector('header');
 // Titolo header, relative classi e inserimento in pagina
 const headerTitle = document.createElement('h1');
@@ -17,7 +6,7 @@ headerTitle.innerHTML = 'Your objects list';
 headerTitle.classList.add('text-white', 'mb-0');
 pageHeader.appendChild(headerTitle);
 
-// Main
+// MAIN
 const pageMain = document.querySelector('main');
 // Box contentente la lista, relative classi e inserimento in pagina
 const listWrapper = document.createElement('div');
@@ -40,7 +29,28 @@ gamesButton.innerHTML = 'games';
 moviesButton.innerHTML = 'movies';
 listHead.append(gamesButton, moviesButton);
 
-// Footer
+// Sezione lista inferiore
+const pageListNameBox = document.createElement('div');
+const pageListTypeBox = document.createElement('div');
+const pageListPriceBox = document.createElement('div');
+const pageListSagaBox = document.createElement('div');
+pageListNameBox.classList.add('h-25', 'border', 'border-3', 'border-white', 'd-flex', 'justify-content-center', 'align-items-center', 'text-white', 'fs-5', 'fw-bold');
+pageListTypeBox.classList.add('h-25', 'border', 'border-3', 'border-white', 'd-flex', 'justify-content-center', 'align-items-center', 'text-white', 'fs-5', 'fw-bold');
+pageListPriceBox.classList.add('h-25', 'border', 'border-3', 'border-white', 'd-flex', 'justify-content-center', 'align-items-center', 'text-white', 'fs-5', 'fw-bold');
+pageListSagaBox.classList.add('h-25', 'border', 'border-3', 'border-white', 'd-flex', 'justify-content-center', 'align-items-center', 'text-white', 'fs-5', 'fw-bold');
+
+listBody.append(pageListNameBox, pageListTypeBox, pageListPriceBox, pageListSagaBox);
+
+// Arrows
+const sliderLeftArrow = document.createElement('i');
+const sliderRightArrow = document.createElement('i');
+sliderLeftArrow.classList.add('slider_arrow', 'fas', 'fa-arrow-left', 'text-white', 'fs-1');
+sliderRightArrow.classList.add('slider_arrow', 'fas', 'fa-arrow-right','text-white', 'fs-1');
+
+pageMain.append(sliderLeftArrow, listWrapper, sliderRightArrow);
+
+
+// FOOTER
 const pageFooter = document.querySelector('footer');
 // Wrapper decorazione footer, classi ai sottoelementi e inserimento del tutto in pagina
 const footerDecorationWrapper = document.createElement('div');
@@ -114,41 +124,15 @@ const movies = [
     }
 ];
 
-
-
-
-
-
-
-// TEST
-const pageListNameBox = document.createElement('div');
-const pageListTypeBox = document.createElement('div');
-const pageListPriceBox = document.createElement('div');
-const pageListSagaBox = document.createElement('div');
-
-const sliderLeftArrow = document.createElement('i');
-const sliderRightArrow = document.createElement('i');
-
-sliderLeftArrow.classList.add('slider_arrow', 'fas', 'fa-arrow-left', 'text-white', 'fs-1');
-sliderRightArrow.classList.add('slider_arrow', 'fas', 'fa-arrow-right','text-white', 'fs-1');
-
-pageMain.append(sliderLeftArrow, listWrapper, sliderRightArrow);
-
-
-pageListNameBox.classList.add('h-25', 'border', 'border-3', 'border-white', 'd-flex', 'justify-content-center', 'align-items-center', 'text-white', 'fs-5', 'fw-bold');
-pageListTypeBox.classList.add('h-25', 'border', 'border-3', 'border-white', 'd-flex', 'justify-content-center', 'align-items-center', 'text-white', 'fs-5', 'fw-bold');
-pageListPriceBox.classList.add('h-25', 'border', 'border-3', 'border-white', 'd-flex', 'justify-content-center', 'align-items-center', 'text-white', 'fs-5', 'fw-bold');
-pageListSagaBox.classList.add('h-25', 'border', 'border-3', 'border-white', 'd-flex', 'justify-content-center', 'align-items-center', 'text-white', 'fs-5', 'fw-bold');
-
-listBody.append(pageListNameBox, pageListTypeBox, pageListPriceBox, pageListSagaBox);
-
-
+// FLAG PER I DUE SLIDER
 let activeArray = videoGames;
 let arrayWidth = decidingArrayLength(activeArray);
 let activeObject = 0;
 let numberOfKeys = decidingHowManyKeys(activeArray);
 
-// Tutti gli oggetti hanno lo stesso numero di keys quindi un controllo su uno è sufficiente
+
+// FUNCTIONS
+
 
 fillingBoxesUp(activeArray, activeObject);
 
@@ -158,7 +142,7 @@ gamesButton.addEventListener('click', function(){
     activeObject = 0;   
     numberOfKeys = decidingHowManyKeys(activeArray);
     fillingBoxesUp(activeArray, activeObject);
-    console.log(activeArray + numberOfKeys);
+
 });
 
 moviesButton.addEventListener('click', function(){
@@ -166,23 +150,19 @@ moviesButton.addEventListener('click', function(){
     activeObject = 0;
     numberOfKeys = decidingHowManyKeys(activeArray);
     fillingBoxesUp(activeArray, activeObject);
-    console.log(activeArray + numberOfKeys);
+    
 });
-
 
 
 sliderLeftArrow.addEventListener('click', function(){
 
     arrayWidth = decidingArrayLength(activeArray);
-
     numberOfKeys = decidingHowManyKeys(activeArray);
-
     if(activeObject === 0){
         activeObject = arrayWidth - 1;
     } else{
         activeObject--;
     }
-    
     fillingBoxesUp(activeArray, activeObject);
 
 });
@@ -190,17 +170,14 @@ sliderLeftArrow.addEventListener('click', function(){
 sliderRightArrow.addEventListener('click', function(){
 
     arrayWidth = decidingArrayLength(activeArray);
-
     if(activeObject === arrayWidth - 1){
         activeObject = 0;
     } else{
         activeObject++;
     }
-    
     fillingBoxesUp(activeArray, activeObject);
 
 });
-
 
 
 function fillingBoxesUp(pickedArray, pickedObject){
@@ -213,20 +190,16 @@ function fillingBoxesUp(pickedArray, pickedObject){
 
 function decidingHowManyKeys(pickedArray){
     
-    console.log(pickedArray);
-
     let keysAmount = 0;
     for(let key in pickedArray[0]){
         keysAmount++;
     } 
-    console.log(keysAmount);
     return keysAmount;
 };
 
 function decidingArrayLength(pickedArray){
 
     const arraySize = pickedArray.length;
-
     return arraySize;
 
 }
