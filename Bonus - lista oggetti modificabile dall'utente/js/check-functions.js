@@ -25,7 +25,7 @@ function checkSpecialCharacters(string){
 // Funzione che controlla la presenza di caratteri numerici in una singola parola
 // Nota: questa funzione può anche controllare la presenza di numeri in una stringa
 //
-// word -> parola da analizzare, proveniente da un prompt o dal codice
+// wordOrString -> parola da analizzare, proveniente da un prompt o dal codice
 //
 // return -> la funzione ritorna vero se trova numeri nella parola, altrimenti ritorna falso
 //

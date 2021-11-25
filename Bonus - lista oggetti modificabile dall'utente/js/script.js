@@ -6,105 +6,6 @@
 // Dare la possibilità all’utente, attraverso 3 prompt(), di aggiungere un nuovo oggetto studente inserendo nell’ordine: nome, cognome e età.
 
 
-
-// Parte 1
-// Creare un oggetto che descriva uno studente, con le seguenti proprietà: nome, cognome e età.
-// Stampare a schermo attraverso un ciclo for-in tutte le proprietà dell'oggetto.
-
-// console.log('Parte 1:');
-
-// const student = {
-//     firstName: 'Emanuele',
-//     lastName: 'Cardone',
-//     age: 25
-// };
-
-// for(let key in student){
-//     console.log(key + `: ` + student[key]);
-// }
-
-
-// ///////////////////////////////////////////////////////////////////////
-
-
-// // Parte 2
-// // Creare un array di oggetti di studenti.
-// // Ciclare su tutti gli studenti e stampare per ognuno di essi, nome e cognome.
-
-// console.log('-------');
-// console.log('Parte 2:');
-
-// const studentsList = [
-//     {
-//         firstName: 'Matteo',
-//         lastName: 'Centoni',
-//         age: 28
-//     },
-//     {
-//         firstName: 'Daniele',
-//         lastName: 'Martini',
-//         age: 42
-//     },
-//     {
-//         firstName: 'Daniela',
-//         lastName: 'Leopardi',
-//         age: 21
-//     },
-//     {
-//         firstName: 'Jennifer',
-//         lastName: 'Lo Santo',
-//         age: 15
-//     },
-//     {
-//         firstName: 'Giacomo',
-//         lastName: 'Taddei',
-//         age: 35
-//     }
-// ];
-
-// for(let i = 0; i < studentsList.length; i++){
-
-//     // Dot notation
-//     console.log('Dot notation: ' + studentsList[i].firstName + ' ' + studentsList[i].lastName);
-    
-//     // Bracket notation
-//     console.log('Bracket notation: ' + studentsList[i]['firstName'] + ' ' + studentsList[i]['lastName']);
-
-//     // For in
-//     for(let key in studentsList[i]){
-//         switch(key){
-//             case 'firstName':
-//             case 'lastName':
-//                 console.log('For in: ' + studentsList[i][key]);
-//                 break;
-//         }
-//     }
-
-// }
-
-
-// ///////////////////////////////////////////////////////////////////////
-
-
-// // Parte 3
-// // Dare la possibilità all’utente, attraverso 3 prompt(), di aggiungere un nuovo oggetto studente inserendo nell’ordine: nome, cognome e età.
-
-// console.log('-------');
-// console.log('Parte 3:');
-
-// const newStudent = {
-//     firstName: prompt(`Inserisci il nome del nuovo studente:`),
-//     lastName: prompt(`Inserisci il cognome del nuovo studente:`),
-//     age: parseInt(prompt(`Inserisci l'età del nuovo studente:`))
-// };
-
-// console.log(newStudent);
-
-
-// --------------------------------------------------------------------------------------------------------------------
-
-
-
 // INIZIO QUI 
 
 
@@ -152,6 +53,65 @@ rightFooterDecoration.classList.add('side_footer_decoration', 'border', 'border-
 pageFooter.appendChild(footerDecorationWrapper);
 footerDecorationWrapper.append(leftFooterDecoration, middleFooterDecoration, rightFooterDecoration);
 middleFooterDecoration.appendChild(footerStar);
+
+
+// OBJECTS
+
+const videoGames = [
+    {
+        name: 'Grand Theft Auto',
+        type: 'Action',
+        price: 70,
+        saga: ['GTA San Andreas', 'GTA 4', 'GTA V']
+    },
+    {
+        name: 'Fifa',
+        type: 'Sport',
+        price: 90,
+        saga: ['Fifa 10', 'Fifa 18', 'Fifa 21']
+    },
+    {
+        name: 'Escape Room',
+        type: 'Strategy',
+        price: 30,
+        saga: ['Escape Room 1', 'Escape Room 3', 'Escape Room 4', 'Escape Room 7', 'Escape Room 10']
+    },
+    {
+        name: 'NBA',
+        type: 'Sport',
+        price: 50,
+        saga: ['NBA 1', 'NBA 2', 'NBA 3', 'NBA 4']
+    },
+    {
+        name: 'PayDay',
+        type: 'Action',
+        price: 35,
+        saga: ['PayDay', 'PayDay2']
+    }
+];
+
+const movies = [
+    {
+        name: 'Harry Potter',
+        type: 'Fantasy',
+        price: 30,
+        saga: ['Harry Potter 1', 'Harry Potter 2', 'Harry Potter 3', 'Harry Potter 4', 'Harry Potter 5']
+    },
+    {
+        name: 'The Lord of the Rings',
+        type: 'Medieval',
+        price: 20,
+        saga: ['The Lord of the Rings 1', 'The Lord of the Rings 2', 'The Lord of the Rings 3']
+    },
+    {
+        name: 'Suicide Squad',
+        type: 'Action',
+        price: 40,
+        saga: ['Suicide Squad 1', 'Suicide Squad 2', 'Suicide Squad 3']
+    }
+];
+
+
 
 
 

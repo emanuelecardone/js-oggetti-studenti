@@ -99,3 +99,7 @@ const newStudent = {
 };
 
 console.log(newStudent);
+
+studentsList.push(newStudent);
+
+console.log(studentsList);
