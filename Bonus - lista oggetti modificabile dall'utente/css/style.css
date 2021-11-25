@@ -21,6 +21,9 @@
 .border_black{
     border: solid black;
 }
+.slider_arrow{
+    cursor: pointer;
+}
 
 /* HEADER */
 
