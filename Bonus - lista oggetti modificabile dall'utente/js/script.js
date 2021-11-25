@@ -16,7 +16,7 @@ listWrapper.classList.add('list_wrapper', 'w-50', 'h-75');
 // Sezioni della lista, relativi stili e inserimento in pagina
 const listHead = document.createElement('div');
 const listBody = document.createElement('div');
-listHead.classList.add('list_head', 'w-100', 'h_15', 'd-flex', 'justify-content-center', 'align-items-center', 'border', 'border-3', 'border-white');
+listHead.classList.add('list_head', 'w-100', 'h_15', 'd-flex', 'justify-content-center', 'align-items-center');
 listBody.classList.add('list_body', 'w-100', 'h_85', 'd-flex', 'flex-column');
 listWrapper.append(listHead, listBody);
 
@@ -130,11 +130,10 @@ let arrayWidth = decidingArrayLength(activeArray);
 let activeObject = 0;
 let numberOfKeys = decidingHowManyKeys(activeArray);
 
+fillingBoxesUp(activeArray, activeObject);
 
 // FUNCTIONS
 
-
-fillingBoxesUp(activeArray, activeObject);
 
 gamesButton.addEventListener('click', function(){
     
@@ -182,10 +181,18 @@ sliderRightArrow.addEventListener('click', function(){
 
 function fillingBoxesUp(pickedArray, pickedObject){
     
-    pageListNameBox.innerHTML = pickedArray[pickedObject]['name'];
-    pageListTypeBox.innerHTML = pickedArray[pickedObject]['type'];
-    pageListPriceBox.innerHTML = pickedArray[pickedObject]['price'];
-    pageListSagaBox.innerHTML = pickedArray[pickedObject]['saga'];
+    pageListNameBox.innerHTML = `
+        <span class="fs-2 text-center">Name:<br><span class="fs-4">${pickedArray[pickedObject]['name']}</span></span>
+    `;
+    pageListTypeBox.innerHTML = `
+        <span class="fs-2 text-center">Type:<br><span class="fs-4">${pickedArray[pickedObject]['type']}</span></span>
+    `;
+    pageListPriceBox.innerHTML = `
+        <span class="fs-2 text-center">Price:<br><span class="fs-4">${pickedArray[pickedObject]['price']}</span></span>
+    `;
+    pageListSagaBox.innerHTML = `
+        <span class="fs-2 text-center">Saga:<br><span class="fs-4">${pickedArray[pickedObject]['saga']}</span></span>
+    `;
 };
 
 function decidingHowManyKeys(pickedArray){
