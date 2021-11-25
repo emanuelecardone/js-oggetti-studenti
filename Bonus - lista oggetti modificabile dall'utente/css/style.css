@@ -1,0 +1,21 @@
+/* COMMON */
+
+.my_green_bg{
+    background-color: #9cdab5;
+}
+
+/* HEADER */
+
+/* MAIN */
+main{
+    height: calc(100vh - 175px);
+}
+
+/* FOOTER */
+.side_footer_decoration{
+    width: calc((100% - 100px) / 2 );
+    height: 1px;
+}
+.middle_footer_decoration{
+    width: 20px;
+}
