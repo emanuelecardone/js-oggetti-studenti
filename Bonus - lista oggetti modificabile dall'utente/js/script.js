@@ -15,8 +15,8 @@ listWrapper.classList.add('list_wrapper', 'w-50', 'h-75');
 // Sezioni dei containers riempiti dall'utente
 const chosenGames = document.createElement('div');
 const chosenMovies = document.createElement('div');
-chosenGames.classList.add( 'chosen_games', 'chosen_list', 'w_10', 'h-50', 'border', 'border-3', 'border-white', 'd-flex', 'flex-column', 'align-items-center', 'position-absolute');
-chosenMovies.classList.add('chosen_movies', 'chosen_list', 'w_10', 'h-50', 'border-3', 'border_black', 'd-flex', 'flex-column', 'align-items-center', 'position-absolute');
+chosenGames.classList.add( 'chosen_games', 'chosen_list', 'w_10', 'h-50', 'border', 'border-3', 'border-white', 'd-flex', 'flex-column', 'justify-content-center', 'align-items-center', 'position-absolute');
+chosenMovies.classList.add('chosen_movies', 'chosen_list', 'w_10', 'h-50', 'border-3', 'border_black', 'd-flex', 'justify-content-center', 'flex-column', 'align-items-center', 'position-absolute');
 
 
 // Sezioni della lista, relativi stili e inserimento in pagina
@@ -33,12 +33,12 @@ const addButton = document.createElement('button');
 const removeButton = document.createElement('button');
 gamesButton.classList.add('games_button', 'picked', 'btn', 'text-white', 'fs-4', 'fw-bold', 'text-uppercase');
 moviesButton.classList.add('movies_button', 'btn', 'fs-4', 'fw-bold', 'text-uppercase');
-addButton.classList.add('add_button', 'chosen_games_button', 'btn', 'text-white', 'fs-4', 'fw-bold', 'text-uppercase', 'border', 'border-3', 'border-white', 'position-fixed');
-removeButton.classList.add('remove_button', 'chosen_movies_button', 'btn', 'text-black', 'fs-4', 'fw-bold', 'text-uppercase', 'border-3', 'border_black', 'position-fixed');
+addButton.classList.add('add_button', 'chosen_games_button', 'btn', 'text-white', 'fs-4', 'fw-bold', 'text-uppercase', 'border-3', 'position-fixed');
+removeButton.classList.add('remove_button', 'chosen_movies_button', 'btn', 'text-white', 'fs-4', 'fw-bold', 'text-uppercase', 'border-3', 'position-fixed');
 gamesButton.innerHTML = 'games';
 moviesButton.innerHTML = 'movies';
-addButton.innerHTML = 'add';
-removeButton.innerHTML = 'remove';
+addButton.innerHTML = 'add to list';
+removeButton.innerHTML = 'empty list';
 listHead.append(addButton, gamesButton, moviesButton, removeButton);
 
 // Sezione lista inferiore
@@ -147,6 +147,42 @@ fillingBoxesUp(activeArray, activeObject);
 
 // FUNCTIONS
 
+// Creo una copia dell'array degli oggetti
+const chosenGamesList = [];
+
+const chosenMoviesList = [];
+console.log(chosenGamesList + chosenMoviesList);
+
+addButton.addEventListener('click', function(){
+    if(activeArray === videoGames){
+        if(!(chosenGamesList.includes(videoGames[activeObject]['name']))){
+            chosenGamesList.push(videoGames[activeObject]['name']);
+            chosenGames.innerHTML += `<div>${videoGames[activeObject]['name']}</div>`;
+        }
+        console.log(videoGames[activeObject]['name']);
+        console.log(activeObject);
+    } else{
+        if(!(chosenMoviesList.includes(movies[activeObject]['name']))){
+            chosenMoviesList.push(movies[activeObject]['name']);
+            chosenMovies.innerHTML += `<div>${movies[activeObject]['name']}</div>`;
+        }
+        console.log(videoGames[activeObject]['name']);
+        console.log(activeObject);
+    }
+    
+});
+
+removeButton.addEventListener('click', function(){
+    if(activeArray === videoGames){
+        chosenGamesList.splice(0);
+        chosenGames.innerHTML = chosenGamesList;
+    } else{
+        chosenMoviesList.splice(0);
+        chosenMovies.innerHTML = chosenMoviesList;
+    }
+    
+});
+
 
 gamesButton.addEventListener('click', function(){
     
@@ -248,6 +284,8 @@ function decidingArrayLength(pickedArray){
 
 function switchingBlackWhite(prevColor, pickedColor){
 
+    addButton.classList.remove(`border_${prevColor}`, `text-${prevColor}`);
+    removeButton.classList.remove(`border_${prevColor}`, `text-${prevColor}`);
     pageListNameBox.classList.remove(`border_${prevColor}`);
     pageListTypeBox.classList.remove(`border_${prevColor}`);
     pageListPriceBox.classList.remove(`border_${prevColor}`);
@@ -255,6 +293,8 @@ function switchingBlackWhite(prevColor, pickedColor){
     sliderLeftArrow.classList.remove(`text-${prevColor}`);
     sliderRightArrow.classList.remove(`text-${prevColor}`);
 
+    addButton.classList.add(`border_${pickedColor}`, `text-${pickedColor}`);
+    removeButton.classList.add(`border_${pickedColor}`, `text-${pickedColor}`);
     pageListNameBox.classList.add(`border_${pickedColor}`);
     pageListTypeBox.classList.add(`border_${pickedColor}`);
     pageListPriceBox.classList.add(`border_${pickedColor}`);
