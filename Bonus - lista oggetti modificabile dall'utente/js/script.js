@@ -22,7 +22,7 @@ const pageMain = document.querySelector('main');
 // Box contentente la lista, relative classi e inserimento in pagina
 const listWrapper = document.createElement('div');
 listWrapper.classList.add('list_wrapper', 'w-50', 'h-75');
-pageMain.appendChild(listWrapper);
+
 
 // Sezioni della lista, relativi stili e inserimento in pagina
 const listHead = document.createElement('div');
@@ -123,6 +123,15 @@ const pageListTypeBox = document.createElement('div');
 const pageListPriceBox = document.createElement('div');
 const pageListSagaBox = document.createElement('div');
 
+const sliderLeftArrow = document.createElement('i');
+const sliderRightArrow = document.createElement('i');
+
+sliderLeftArrow.classList.add('slider_arrow', 'fas', 'fa-arrow-left', 'text-white', 'fs-1');
+sliderRightArrow.classList.add('slider_arrow', 'fas', 'fa-arrow-right','text-white', 'fs-1');
+
+pageMain.append(sliderLeftArrow, listWrapper, sliderRightArrow);
+
+
 pageListNameBox.classList.add('h-25', 'border', 'border-3', 'border-white', 'd-flex', 'justify-content-center', 'align-items-center', 'text-white', 'fs-5', 'fw-bold');
 pageListTypeBox.classList.add('h-25', 'border', 'border-3', 'border-white', 'd-flex', 'justify-content-center', 'align-items-center', 'text-white', 'fs-5', 'fw-bold');
 pageListPriceBox.classList.add('h-25', 'border', 'border-3', 'border-white', 'd-flex', 'justify-content-center', 'align-items-center', 'text-white', 'fs-5', 'fw-bold');
@@ -130,7 +139,56 @@ pageListSagaBox.classList.add('h-25', 'border', 'border-3', 'border-white', 'd-f
 
 listBody.append(pageListNameBox, pageListTypeBox, pageListPriceBox, pageListSagaBox);
 
-pageListNameBox.innerHTML = videoGames[0]['name'];
-pageListTypeBox.innerHTML = videoGames[0]['type'];
-pageListPriceBox.innerHTML = videoGames[0]['price'];
-pageListSagaBox.innerHTML = videoGames[0]['saga'];
+let activeObject = 0;
+let numberOfKeys = 0;
+
+// Tutti gli oggetti hanno lo stesso numero di keys quindi un controllo su uno è sufficiente
+for(let key in videoGames[0]){
+    numberOfKeys++;
+}
+console.log(numberOfKeys);
+
+
+pageListNameBox.innerHTML = videoGames[activeObject]['name'];
+pageListTypeBox.innerHTML = videoGames[activeObject]['type'];
+pageListPriceBox.innerHTML = videoGames[activeObject]['price'];
+pageListSagaBox.innerHTML = videoGames[activeObject]['saga'];
+
+sliderLeftArrow.addEventListener('click', function(){
+
+    if(activeObject === 0){
+        activeObject = numberOfKeys;
+    } else{
+        activeObject--;
+    }
+    
+
+    console.log(activeObject);
+
+    pageListNameBox.innerHTML = videoGames[activeObject]['name'];
+    pageListTypeBox.innerHTML = videoGames[activeObject]['type'];
+    pageListPriceBox.innerHTML = videoGames[activeObject]['price'];
+    pageListSagaBox.innerHTML = videoGames[activeObject]['saga'];
+
+});
+
+sliderRightArrow.addEventListener('click', function(){
+
+    if(activeObject === numberOfKeys){
+        activeObject = 0;
+    } else{
+        activeObject++;
+    }
+    
+    
+
+    console.log(activeObject);
+
+    console.log(videoGames[0])
+
+    pageListNameBox.innerHTML = videoGames[activeObject]['name'];
+    pageListTypeBox.innerHTML = videoGames[activeObject]['type'];
+    pageListPriceBox.innerHTML = videoGames[activeObject]['price'];
+    pageListSagaBox.innerHTML = videoGames[activeObject]['saga'];
+
+});
